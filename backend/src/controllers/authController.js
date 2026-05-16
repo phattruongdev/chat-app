@@ -8,6 +8,7 @@ const publicUser = (user) => ({
   name: user.name,
   email: user.email,
   avatar: user.avatar,
+  phone: user.phone,
   lastSeen: user.lastSeen,
   createdAt: user.createdAt
 });
@@ -55,4 +56,53 @@ export const login = async (req, res, next) => {
 
 export const me = async (req, res) => {
   res.json({ success: true, user: publicUser(req.user) });
+};
+
+export const updateProfile = async (req, res, next) => {
+  try {
+    const { name, email, phone, avatar, currentPassword, newPassword } = req.body;
+    const user = await User.findById(req.user._id).select('+password');
+
+    if (!user) throw new HttpError(404, 'User not found');
+
+    if (name !== undefined) {
+      if (!name.trim() || name.trim().length < 2) throw new HttpError(400, 'Name must be at least 2 characters');
+      user.name = name.trim();
+    }
+
+    if (email !== undefined) {
+      if (!email.trim()) throw new HttpError(400, 'Email is required');
+      const normalizedEmail = email.trim().toLowerCase();
+      const existingUser = await User.findOne({ email: normalizedEmail, _id: { $ne: user._id } });
+      if (existingUser) throw new HttpError(409, 'Email is already registered');
+      user.email = normalizedEmail;
+    }
+
+    if (phone !== undefined) {
+      const normalizedPhone = phone.trim();
+      if (normalizedPhone && !/^[0-9+\-\s()]{8,20}$/.test(normalizedPhone)) {
+        throw new HttpError(400, 'Phone number format is invalid');
+      }
+      user.phone = normalizedPhone;
+    }
+
+    if (avatar !== undefined) {
+      user.avatar = avatar.trim();
+    }
+
+    if (newPassword) {
+      if (newPassword.length < 6) throw new HttpError(400, 'New password must be at least 6 characters');
+      if (!currentPassword) throw new HttpError(400, 'Current password is required to change password');
+
+      const isMatch = await bcrypt.compare(currentPassword, user.password);
+      if (!isMatch) throw new HttpError(401, 'Current password is incorrect');
+
+      user.password = await bcrypt.hash(newPassword, 12);
+    }
+
+    await user.save();
+    res.json({ success: true, user: publicUser(user) });
+  } catch (error) {
+    next(error);
+  }
 };

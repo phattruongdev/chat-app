@@ -64,6 +64,7 @@ frontend/
 - `POST /api/auth/register`
 - `POST /api/auth/login`
 - `GET /api/auth/me`
+- `PUT /api/auth/profile`
 - `GET /api/users`
 - `GET /api/messages/:userId`
 - `POST /api/messages`
@@ -128,6 +129,7 @@ Default URLs:
 - [x] Chat history
 - [x] Error and loading states
 - [x] Responsive UI
+- [x] Personal profile update
 - [ ] Install dependencies locally
 - [ ] Configure `.env`
 - [ ] Run two browser sessions and test chat flow

@@ -30,6 +30,17 @@ export const useAuthStore = create(
           throw error;
         }
       },
+      updateProfile: async (payload) => {
+        set({ loading: true, error: '' });
+        try {
+          const { data } = await api.put('/auth/profile', payload);
+          set({ user: data.user, loading: false });
+          return data.user;
+        } catch (error) {
+          set({ error: error.message, loading: false });
+          throw error;
+        }
+      },
       logout: () => {
         disconnectSocket();
         set({ user: null, token: null, error: '' });

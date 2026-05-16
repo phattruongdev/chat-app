@@ -1,11 +1,13 @@
-import { Search } from 'lucide-react';
+import { Settings, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useAuthStore } from '../stores/authStore.js';
 import { useChatStore } from '../stores/chatStore.js';
 import Avatar from './common/Avatar.jsx';
+import ProfileModal from './ProfileModal.jsx';
 
 export default function UserList() {
   const [query, setQuery] = useState('');
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { logout, user } = useAuthStore();
   const { users, selectedUser, selectUser, onlineUserIds, loadingUsers } = useChatStore();
 
@@ -24,9 +26,14 @@ export default function UserList() {
               <p className="text-xs text-gray-500">Online</p>
             </div>
           </div>
-          <button onClick={logout} className="rounded-md border border-line px-3 py-2 text-xs font-semibold text-gray-700">
-            Logout
-          </button>
+          <div className="flex gap-2">
+            <button onClick={() => setIsProfileOpen(true)} className="grid h-10 w-10 place-items-center rounded-md border border-line text-gray-700" aria-label="Open profile">
+              <Settings className="h-4 w-4" />
+            </button>
+            <button onClick={logout} className="rounded-md border border-line px-3 py-2 text-xs font-semibold text-gray-700">
+              Logout
+            </button>
+          </div>
         </div>
         <label className="mt-4 flex items-center gap-2 rounded-md border border-line bg-panel px-3 py-2">
           <Search className="h-4 w-4 text-gray-400" />
@@ -61,6 +68,7 @@ export default function UserList() {
           );
         })}
       </div>
+      <ProfileModal open={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
     </aside>
   );
 }
