@@ -42,7 +42,12 @@ export const useChatStore = create((set, get) => ({
     }
   },
   pushMessage: (message) => {
-    const { messages } = get();
+    const { messages, selectedUser } = get();
+    const selectedUserId = selectedUser?._id || selectedUser?.id;
+    const senderId = message.sender?._id || message.sender;
+    const receiverId = message.receiver?._id || message.receiver;
+
+    if (selectedUserId && ![senderId, receiverId].includes(selectedUserId)) return;
     if (messages.some((item) => item._id === message._id)) return;
     set({ messages: [...messages, message] });
   },
