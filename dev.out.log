@@ -29,3 +29,82 @@
 [0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
 [1] [2m6:03:25 PM[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
 [1] [2m6:03:25 PM[22m [36m[1m[vite][22m[39m server restarted.
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/server.js`[39m
+[0] MongoDB connected
+[0] node:events:502
+[0]       throw er; // Unhandled 'error' event
+[0]       ^
+[0] 
+[0] Error: listen EADDRINUSE: address already in use :::5001
+[0]     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+[0]     at listenInCluster (node:net:1965:12)
+[0]     at Server.listen (node:net:2067:7)
+[0]     at file:///D:/ACongviec/Apps/New%20folder/backend/src/server.js:47:12
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[0] Emitted 'error' event on Server instance at:
+[0]     at emitErrorNT (node:net:1944:8)
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+[0]   code: 'EADDRINUSE',
+[0]   errno: -4091,
+[0]   syscall: 'listen',
+[0]   address: '::',
+[0]   port: 5001
+[0] }
+[0] 
+[0] Node.js v20.19.4
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/server.js`[39m
+[0] MongoDB connected
+[0] node:events:502
+[0]       throw er; // Unhandled 'error' event
+[0]       ^
+[0] 
+[0] Error: listen EADDRINUSE: address already in use :::5001
+[0]     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+[0]     at listenInCluster (node:net:1965:12)
+[0]     at Server.listen (node:net:2067:7)
+[0]     at file:///D:/ACongviec/Apps/New%20folder/backend/src/server.js:47:12
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[0] Emitted 'error' event on Server instance at:
+[0]     at emitErrorNT (node:net:1944:8)
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+[0]   code: 'EADDRINUSE',
+[0]   errno: -4091,
+[0]   syscall: 'listen',
+[0]   address: '::',
+[0]   port: 5001
+[0] }
+[0] 
+[0] Node.js v20.19.4
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/server.js`[39m
+[0] [32m[nodemon] restarting due to changes...[39m
+[0] [32m[nodemon] starting `node src/server.js`[39m
+[0] MongoDB connected
+[0] node:events:502
+[0]       throw er; // Unhandled 'error' event
+[0]       ^
+[0] 
+[0] Error: listen EADDRINUSE: address already in use :::5001
+[0]     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
+[0]     at listenInCluster (node:net:1965:12)
+[0]     at Server.listen (node:net:2067:7)
+[0]     at file:///D:/ACongviec/Apps/New%20folder/backend/src/server.js:47:12
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[0] Emitted 'error' event on Server instance at:
+[0]     at emitErrorNT (node:net:1944:8)
+[0]     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+[0]   code: 'EADDRINUSE',
+[0]   errno: -4091,
+[0]   syscall: 'listen',
+[0]   address: '::',
+[0]   port: 5001
+[0] }
+[0] 
+[0] Node.js v20.19.4
+[0] [31m[nodemon] app crashed - waiting for file changes before starting...[39m
