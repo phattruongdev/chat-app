@@ -12,15 +12,18 @@ import { setupSocket } from './socket/index.js';
 
 const app = express();
 const server = http.createServer(app);
-const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 const io = new Server(server, {
-  cors: { origin: clientUrl, methods: ['GET', 'POST'] }
+  cors: { origin: allowedOrigins, methods: ['GET', 'POST'] }
 });
 
 setupSocket(io);
 
-app.use(cors({ origin: clientUrl, credentials: true }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use((req, _res, next) => {
   req.io = io;

@@ -101,7 +101,7 @@ npm run dev
 Default URLs:
 
 - Frontend: `http://localhost:5173`
-- Backend: `http://localhost:5000`
+- Backend: `http://localhost:5001`
 - MongoDB: `mongodb://127.0.0.1:27017/pro-chat-app`
 
 ## Advanced Features To Add Next

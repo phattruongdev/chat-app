@@ -6,6 +6,8 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
+    "seed": "node src/scripts/seed.js",
+    "seed:conversation": "node src/scripts/seedConversation.js",
     "start": "node src/server.js"
   },
   "dependencies": {
